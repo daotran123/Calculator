@@ -14,6 +14,7 @@ import androidx.core.view.WindowInsetsCompat
 class MainActivity : AppCompatActivity(), View.OnClickListener {
 
     lateinit var textReuslt: TextView
+    lateinit var pre_Result: TextView
 
     private var result: Int = 0
     var state: Int = 1
@@ -21,11 +22,13 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     var op2: Int = 0
     var operator: Int = 0
     var check_preEq: Int = 0 //0 la dang o state = 1, 1 la dang state = 2, 2 la dang trinh bay result
+    var string_op: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        pre_Result = findViewById(R.id.pre_result)
         textReuslt = findViewById(R.id.text_result)
 
         findViewById<Button>(R.id.btn0).setOnClickListener(this)
@@ -146,6 +149,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 op2 = 0
                 check_preEq = 1
             }
+
+            string_op = "+"
             state = 2
             operator = 1
         }else if (id == R.id.btnSub) {
@@ -154,6 +159,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 op2 = 0
                 check_preEq = 1
             }
+
+            string_op = "-"
             state = 2
             operator = 2
         }else if (id == R.id.btnMul) {
@@ -162,6 +169,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 op2 = 0
                 check_preEq = 1
             }
+
+            string_op = "x"
             state = 2
             operator = 3
         }else if (id == R.id.btnDiv) {
@@ -170,6 +179,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 op2 = 0
                 check_preEq = 1
             }
+
+            string_op = "/"
             state = 2
             operator = 4
         } else if (id == R.id.btnC){
@@ -178,8 +189,10 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             op2 = 0
             operator = 0
             textReuslt.text = "0"
+            pre_Result.text = "0"
             check_preEq = 0
             result = 0
+
         } else if (id == R.id.btnCE){
             if (check_preEq == 2){
                 state = 1
@@ -210,8 +223,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             textReuslt.text = "$result"
             check_preEq = 2
 
+            pre_Result.text = "$op1 $string_op $op2"
         }
-
 
         Log.i("State:", "$state")
         Log.i("Op1:", "$op1")

@@ -3,12 +3,20 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+    <TextView
+        android:id="@+id/pre_result"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:gravity="right|center_vertical"
+        android:paddingRight="8dp"
+        android:text="0"
+        android:textSize="100sp"/>
 
     <TextView
         android:id="@+id/text_result"
         android:layout_width="match_parent"
         android:layout_height="150dp"
-        android:layout_weight="1.5"
+        android:layout_weight="1.25"
         android:gravity="right|center_vertical"
         android:paddingRight="8dp"
         android:text="0"
